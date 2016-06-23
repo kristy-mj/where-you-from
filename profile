@@ -9,27 +9,27 @@ var knex = require('knex')({
 
 var cmd = process.argv[2]
 var name = process.argv[3]
-var location = process.argv[4]
+var answer1 = process.argv[4]
 
 switch (cmd) {
   case 'list':
     getAll()
-      .then(listbirthplace)
+      .then(listProfile)
       .catch(logError)
       .finally(closeDB)
     break
 
   case 'add':
-    addbirthplace(name, location)
+    addProfile(name, answer1)
       .then(getAll)
-      .then(listbirthplace)
+      .then(listProfile)
       .catch(logError)
       .finally(closeDB)
 }
 
-function listbirthplace(place) {
-  place.forEach(function (bp) {
-    console.log((bp.id + ' ' + bp.name +' ' + bp.birth_place))
+function listProfile(user) {
+  user.forEach(function (pro) {
+    console.log((pro.id + ' : ' + pro.name +' ' + pro.q1))
   })
 }
 
@@ -38,14 +38,13 @@ function logError(err) {
 }
 
 function getAll() {
-  return knex.raw('select * from "birthplace"')
+  return knex.raw('select * from "profile"')
 }
 
-function addbirthplace (name, location) {
-  // return knex.raw('insert into birthplace (name,birth_place) values (" ' + name +' ", "' + location + ' ");')
-  return knex('birthplace').insert({
+function addProfile (name, answer1) {
+  return knex('profile').insert({
     name: name,
-    birth_place: location
+    q1: answer1
   })
 }
 
