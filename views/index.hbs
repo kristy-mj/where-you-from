@@ -1,27 +1,6 @@
 <h1>{{title}}</h1>
 
+<h2>Feeling lonely</h2>
+<h2>Take our quiz and find some friends</h2>
 
-
-<p>Welcome to {{title}}</p>
-<div id="map"></div>
-    <script>
-      function initMap() {
-        var myLatLng = {lat: {{lat}}, lng: {{lng}}}
-
-        var mapDiv = document.getElementById('map');
-        var map = new google.maps.Map(mapDiv, {
-            center: myLatLng,
-            zoom: 8
-        });
-
-        var marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-          title: 'Hello World'
-        })
-      }
-      marker.setMap(map)
-    </script>
-    <script async defer src={{googleMap}}></script>
-
-    map.data.loadGeoJson('../birthPlace')
+<a href="/quiz"><input type="button" name="start" value="Find Friends" /></a>
