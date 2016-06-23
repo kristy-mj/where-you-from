@@ -1,13 +1,27 @@
 <h1>{{title}}</h1>
+
+
+
 <p>Welcome to {{title}}</p>
 <div id="map"></div>
     <script>
       function initMap() {
+        var myLatLng = {lat: {{lat}}, lng: {{lng}}}
+
         var mapDiv = document.getElementById('map');
         var map = new google.maps.Map(mapDiv, {
-            center: {lat: 44.540, lng: -78.546},
+            center: myLatLng,
             zoom: 8
         });
+
+        var marker = new google.maps.Marker({
+          position: myLatLng,
+          map: map,
+          title: 'Hello World'
+        })
       }
+      marker.setMap(map)
     </script>
     <script async defer src={{googleMap}}></script>
+
+    map.data.loadGeoJson('../birthPlace')
