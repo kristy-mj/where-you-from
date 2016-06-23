@@ -1,0 +1,54 @@
+#!/usr/bin/env node
+var knex = require('knex')({
+  client: 'sqlite3',
+  connection: {
+    filename: __dirname + '/dev.sqlite3'
+  },
+  useNullAsDefault: true
+})
+
+var cmd = process.argv[2]
+var name = process.argv[3]
+var location = process.argv[4]
+
+switch (cmd) {
+  case 'list':
+    getAll()
+      .then(listbirthplace)
+      .catch(logError)
+      .finally(closeDB)
+    break
+
+  case 'add':
+    addbirthplace(name, location)
+      .then(getAll)
+      .then(listbirthplace)
+      .catch(logError)
+      .finally(closeDB)
+}
+
+function listbirthplace(place) {
+  place.forEach(function (bp) {
+    console.log((bp.id + ' ' + bp.name +' ' + bp.birth_place))
+  })
+}
+
+function logError(err) {
+  console.log('error mate', err)
+}
+
+function getAll() {
+  return knex.raw('select * from "birthplace"')
+}
+
+function addbirthplace (name, location) {
+  // return knex.raw('insert into birthplace (name,birth_place) values (" ' + name +' ", "' + location + ' ");')
+  return knex('birthplace').insert({
+    name: name,
+    birth_place: location
+  })
+}
+
+function closeDB() {
+  knex.destroy()
+}
