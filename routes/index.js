@@ -6,7 +6,11 @@ dotenv.load()
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.redirect('/startquiz')
+  res.redirect('/home')
+})
+
+router.get('/home', function(req, res, next) {
+  res.render('index', {title: "Friend Finder"})
 })
 
 
