@@ -22,10 +22,8 @@ router.get('/startquiz', function(req, res, next) {
 
 router.get('/search-results', function(req, res, next) {
   profiles.getAll()
-    // .then(listWithoutQ(data))
     .then(function (data) {
-      var obj = data[0]
-      res.render('search-results', obj);
+      res.render('search-results', {data: data})
     })
     .catch(function (err){
       console.log(err)
@@ -40,15 +38,10 @@ router.post('/search-results', function(req, res, next) {
   var inputq3 = req.body.q3
 
   profiles.addProfile(inputName, inputq1, inputq2, inputq3)
-    .then(function (data) {
-      console.log("HELLLLLOOO: ", data)
-      res.render('search-results', { title: "Results"});
-    })
+    .then(res.redirect('/search-results'))
     .catch(function (err){
       console.error(err)
     })
 });
-
-
 
 module.exports = router;
