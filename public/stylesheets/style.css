@@ -1,13 +1,97 @@
+
+
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px "Lato", Helvetica, Arial, sans-serif;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 70px;
+  color: #E2E2E2;
+  background-color:#384D48;
+}
+
+input:focus {
+  outline-width: 0;
+}
+
+input:placeholder-text {
+  color: black;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, input, button {
+  font-family: "Lato", Helvetica, sans-serif;
+  font-weight: 100;
 }
 
 a {
-  color: #00B7FF;
+  color: #2C313A;
 }
 
-#map {
-        width: 100%;
-        height: 400px;
-      }
+.heading {
+  font-size: 5em;
+  font-weight: 100;
+  margin-bottom: 50px;
+}
+
+.subtitle {
+  margin-bottom: 10px;
+  font-weight: 100;
+}
+
+.submit-btn {
+  background-color: #ACAD94;
+  color: #384D48;
+  margin-top: 80px;
+  font-size: 1.2em;
+  font-weight: 300;
+  width: 130px;
+  height: 130px;
+  border-radius: 65px;
+  border-style: none;
+}
+
+.submit-btn:hover {
+  background-color: #E2E2E2;
+}
+
+.exit-btn {
+  text-decoration: none;
+  color: #6A9189;
+  font-size: 1.1em;
+  margin-top: 30px;
+  font-weight: 300;
+  width: 130px;
+}
+
+.exit-btn:hover {
+  color: #93C9BD;
+}
+
+.nevermind {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.name_input {
+  border: none;
+  padding: 5px;
+  font-size: 1em;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  color: white;
+  background-color: rgba(0,0,0,0.2);
+}
+
+.question {
+  border: none;
+  padding: 5px;
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: white;
+  background-color: rgba(0,0,0,0.2);
+}
+
+
+
+
+
