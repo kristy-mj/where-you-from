@@ -7,54 +7,17 @@ var knex = require('knex')({
   useNullAsDefault: true
 })
 
-var cmd = process.argv[2]
-var name = process.argv[3]
-var answer1 = process.argv[4]
-var animal = process.argv[3]
-
-switch (cmd) {
-  case 'list':
-    getAll()
-      .then(listProfile)
-      .catch(logError)
-      .finally(closeDB)
-    break
-
-  case 'add':
-    addProfile(name, answer1)
-      .then(getAll)
-      .then(listProfile)
-      .catch(logError)
-      .finally(closeDB)
-    break
 
 
-  case 'search':
-    findSame(animal)      
-      .then(listWithoutQ)
-      .catch(logError)
-      .finally(closeDB)
-    break
-
-
-   default:
-      console.log('no matched cases')
-      closeDB()
-      break
-  
+function listProfile() {
+  console.log(knex.select('*').from('profile'))
 }
 
+function listWithoutQ(profile) {
+  profile.forEach(function (pro) {
 
-function listProfile(user) {
-  user.forEach(function (pro) {
-    console.log((pro.id + ' : ' + pro.name +' ' + pro.q1))
   })
-}
-
-function listWithoutQ(user) {
-  user.forEach(function (pro) {
-    console.log((pro.id + ' : ' + pro.name))
-  })
+  return
 }
 
 function logError(err) {
@@ -62,7 +25,7 @@ function logError(err) {
 }
 
 function getAll() {
-  return knex.raw('select * from "profile"')
+  return knex.select('*').from('profile')
 }
 
 function addProfile (name, answer1) {
@@ -75,7 +38,7 @@ function addProfile (name, answer1) {
 function findSame(animal){
   var array = animal.split(' ')
   for(var i=0; i<array.length; i++){
-    var word = array[i]    
+    var word = array[i]
   }
   return (knex.raw('select * from "profile" where "q1" like "%' + word + '%"'))
 }
@@ -83,3 +46,48 @@ function findSame(animal){
 function closeDB() {
   knex.destroy()
 }
+
+module.exports = {
+  getAll: getAll,
+  listWithoutQ: listWithoutQ,
+  listProfile: listProfile,
+  logError: logError
+}
+
+
+// var cmd = process.argv[2]
+// var name = process.argv[3]
+// var answer1 = process.argv[4]
+// var animal = process.argv[3]
+
+// switch (cmd) {
+//   case 'list':
+//     getAll()
+//       .then(listProfile)
+//       .catch(logError)
+//       .finally(closeDB)
+//     break
+
+//   case 'add':
+//     addProfile(name, answer1)
+//       .then(getAll)
+//       .then(listProfile)
+//       .catch(logError)
+//       .finally(closeDB)
+//     break
+
+
+//   case 'search':
+//     findSame(animal)
+//       .then(listWithoutQ)
+//       .catch(logError)
+//       .finally(closeDB)
+//     break
+
+
+//    default:
+//       console.log('no matched cases')
+//       closeDB()
+//       break
+
+// }
