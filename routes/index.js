@@ -33,7 +33,14 @@ router.get('/search-results', function(req, res, next) {
 });
 
 router.post('/search-results', function(req, res, next) {
+
+  var inputName = req.body.name
+
+  profiles.addProfile(inputName)
+  // console.log("HEYYYY: ", req.body.q1)
   res.render('search-results', { title: "Results"});
 });
+
+
 
 module.exports = router;
