@@ -35,10 +35,18 @@ router.get('/search-results', function(req, res, next) {
 router.post('/search-results', function(req, res, next) {
 
   var inputName = req.body.name
+  var inputq1 = req.body.q1
+  var inputq2 = req.body.q2
+  var inputq3 = req.body.q3
 
-  profiles.addProfile(inputName)
-  // console.log("HEYYYY: ", req.body.q1)
-  res.render('search-results', { title: "Results"});
+  profiles.addProfile(inputName, inputq1, inputq2, inputq3)
+    .then(function (data) {
+      console.log("HELLLLLOOO: ", data)
+      res.render('search-results', { title: "Results"});
+    })
+    .catch(function (err){
+      console.error(err)
+    })
 });
 
 
