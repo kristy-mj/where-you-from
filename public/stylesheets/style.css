@@ -10,7 +10,7 @@ body {
   background-color:#384D48;
 }
 
-input:focus {
+input:focus, select:focus {
   outline-width: 0;
 }
 
@@ -74,7 +74,7 @@ a {
 
 .name_input {
   border: none;
-  padding: 5px;
+  padding: 10px;
   font-size: 1em;
   margin-top: 40px;
   margin-bottom: 20px;
@@ -84,11 +84,27 @@ a {
 
 .question {
   border: none;
-  padding: 5px;
-  font-size: 1em;
+  font-size: .9em;
   margin-bottom: 20px;
-  color: white;
+  color: #BDC7C1;
   background-color: rgba(0,0,0,0.2);
+  font-weight: 100;
+}
+
+select {
+  font-family: "Lato", Helvetica, sans-serif;
+  letter-spacing: 1px;
+  border: 1px solid #111;
+  background: transparent;
+  width: 300px;
+  padding: 5px 35px 5px 15px;
+  font-weight: 100;
+  border: 1px solid #ccc;
+  height: 34px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
 }
 
 
