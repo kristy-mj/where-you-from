@@ -22,18 +22,12 @@ router.get('/startquiz', function(req, res, next) {
 
 router.get('/search-results', function(req, res, next) {
   profiles.getAll()
-    // .then(listWithoutQ(data))
     .then(function (data) {
-      var obj = data[0]
-      res.render('search-results', obj);
+      res.render('search-results', {data: data})
     })
     .catch(function (err){
       console.log(err)
     })
-});
-
-router.post('/search-results', function(req, res, next) {
-  res.render('search-results', { title: "Results"});
 });
 
 module.exports = router;
