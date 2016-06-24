@@ -28,10 +28,12 @@ function getAll() {
   return knex.select('*').from('profile')
 }
 
-function addProfile (name, answer1) {
+function addProfile (name, answer1, answer2, answer3) {
   return knex('profile').insert({
-    name: name,
-    q1: answer1
+     name: name,
+     q1: answer1,
+     q2: answer2,
+     q3: answer3
   })
 }
 
@@ -51,7 +53,8 @@ module.exports = {
   getAll: getAll,
   listWithoutQ: listWithoutQ,
   listProfile: listProfile,
-  logError: logError
+  logError: logError,
+  addProfile: addProfile
 }
 
 
