@@ -7,27 +7,6 @@ var knex = require('knex')({
   useNullAsDefault: true
 })
 
-
-
-function listProfile() {
-  console.log(knex.select('*').from('profile'))
-}
-
-function listWithoutQ(profile) {
-  profile.forEach(function (pro) {
-
-  })
-  return
-}
-
-function logError(err) {
-  console.log('error mate', err)
-}
-
-function getAll() {
-  return knex.select('*').from('profile')
-}
-
 function addProfile (name, answer1, answer2, answer3) {
   return knex('profile').insert({
      name: name,
@@ -37,24 +16,26 @@ function addProfile (name, answer1, answer2, answer3) {
   })
 }
 
-function findSame(animal){
-  var array = animal.split(' ')
-  for(var i=0; i<array.length; i++){
-    var word = array[i]
-  }
-  return (knex.raw('select * from "profile" where "q1" like "%' + word + '%"'))
-}
-
 function closeDB() {
   knex.destroy()
 }
 
+function findYourAnswers(users){
+  return knex('profile').where('id', 2)
+}
+
+function getAll () {
+  return knex.select('*').from('profile')
+}
+
+function logError(err) {
+  console.log('error mate', err)
+}
+
 module.exports = {
-  getAll: getAll,
-  listWithoutQ: listWithoutQ,
-  listProfile: listProfile,
-  logError: logError,
-  addProfile: addProfile
+  addProfile: addProfile,
+  findYourAnswers: findYourAnswers,
+  getAll: getAll
 }
 
 

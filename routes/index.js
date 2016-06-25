@@ -21,9 +21,10 @@ router.get('/startquiz', function(req, res, next) {
 });
 
 router.get('/search-results', function(req, res, next) {
-  profiles.getAll()
+  profiles.findYourAnswers()
     .then(function (data) {
-      res.render('search-results', {data: data})
+      data = data[0]
+      res.render('search-results', data)
     })
     .catch(function (err){
       console.log(err)
