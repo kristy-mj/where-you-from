@@ -23,11 +23,14 @@ h1, h2, h3, h4, h5, h6, p, a, input, button {
 
 h3 {
   font-size: 2em;
+  background: #384D48;
 }
 
 hr {
+  background: #4F6D7A;
+  border: 0;
+  height: 1px;
   width: 25%;
-  color: #C0D6DF;
 }
 
 a {

@@ -20,8 +20,11 @@ function closeDB() {
   knex.destroy()
 }
 
-function findYourAnswers(users){
-  return knex('profile').where('id', 2)
+// this function is used to return the results we've just submitted
+function findYourAnswers(table, param, callback){
+  return knex(table).where(param).then(function (resp) {
+    callback (null, resp)
+  })
 }
 
 function getAll () {
