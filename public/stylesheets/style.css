@@ -1,7 +1,4 @@
-
-
 body {
-  padding: 50px;
   font: 14px "Lato", Helvetica, Arial, sans-serif;
   text-align: center;
   margin: 0 auto;
@@ -21,6 +18,12 @@ input:placeholder-text {
 h1, h2, h3, h4, h5, h6, p, a, input, button {
   font-family: "Lato", Helvetica, sans-serif;
   font-weight: 100;
+}
+
+img {
+  width: 10em;
+  height: 10em;
+  border-radius: 100%;
 }
 
 a {
@@ -44,9 +47,9 @@ a {
   margin-top: 80px;
   font-size: 1.2em;
   font-weight: 300;
-  width: 130px;
-  height: 130px;
-  border-radius: 65px;
+  width: 10em;
+  height: 10em;
+  border-radius: 100%;
   border-style: none;
 }
 
